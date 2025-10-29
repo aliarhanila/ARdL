@@ -14,6 +14,7 @@ Bu kütüphane, hem **Yapay Sinir Ağlarını (NN / MLP)** hem de **Konvolüsyon
 - 🔁 Custom forward & backward propagation
 - ⚙️ Adjustable hyperparameters (learning rate, epochs)
 - 🧠 Educational — designed for learning, debugging and visualization
+- 💾 Model Save - Load Model
 
 ---
 ## MLP İris Dataset Sonuçları
@@ -24,6 +25,17 @@ MLP modeli Iris veri setindeki örüntüleri başarıyla öğrenmiştir
 ve test kümesinde **%96’nın üzerinde doğruluk** elde etmiştir.  
 Bu, tam bağlı basit bir yapay sinir ağının bile 
 yapılandırılmış veriler üzerinde etkili sonuçlar verebileceğini gösterir.
+
+
+## Model Kaydetmek ve Yüklemek 
+```python
+# Save
+np.savez("mlp_model.npz", weights=W_dense, biases=b_dense)
+
+# Load
+data = np.load("mlp_model.npz", allow_pickle=True)
+W_dense_loaded = data['weights']
+b_dense_loaded = data['biases']
 
 
 ## MLP Nasıl Çalışır? | How the NN Works
