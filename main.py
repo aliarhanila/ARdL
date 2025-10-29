@@ -27,7 +27,7 @@ X_test_small = X_test[test_mask][:5]
 y_test_small = y_test[test_mask][:5]
 
 # One-hot encoding
-num_classes = 2  # sadece 0,1
+num_classes = 2  # only 0,1
 y_train_small_onehot = np.eye(num_classes)[y_train_small]
 y_test_small_onehot = np.eye(num_classes)[y_test_small]
 
