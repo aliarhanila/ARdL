@@ -67,3 +67,7 @@ print("\nPredicts:")
 for i in range(len(X_test_small)):
     y_pred = predict(X_test_small[i], conv_layers, W_dense, b_dense)
     print(f"Örnek {i+1}: Tahmin = {np.argmax(y_pred)}, Gerçek = {y_test_small[i]}")
+#------------------------
+#Model Save 
+#-----------------------
+np.savez("mlp_model.npz", weights=W_dense, biases=b_dense)
