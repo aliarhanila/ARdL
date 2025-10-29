@@ -28,11 +28,10 @@ yapılandırılmış veriler üzerinde etkili sonuçlar verebileceğini gösteri
 
 
 ## Model Kaydetmek ve Yüklemek 
-```python
-# Save
+### Save
 np.savez("mlp_model.npz", weights=W_dense, biases=b_dense)
 
-# Load
+### Load
 data = np.load("mlp_model.npz", allow_pickle=True)
 W_dense_loaded = data['weights']
 b_dense_loaded = data['biases']
