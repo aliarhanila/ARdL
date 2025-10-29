@@ -17,15 +17,7 @@ Bu kütüphane, hem **Yapay Sinir Ağlarını (NN / MLP)** hem de **Konvolüsyon
 
 ---
 ## MLP İris Dataset Sonuçları
-
-
-
-
-
-
-
-
-
+![MLP Training Results on Iris Dataset](assets/iris dataset ARdL library .png)
 MLP modeli Iris veri setindeki örüntüleri başarıyla öğrenmiştir 
 ve test kümesinde **%96’nın üzerinde doğruluk** elde etmiştir.  
 Bu, tam bağlı basit bir yapay sinir ağının bile 
