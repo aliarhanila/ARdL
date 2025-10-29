@@ -1,6 +1,6 @@
 # 🧠 ARdL — Minimal Deep Learning Library (NumPy Only)
 
-**ARdL**, saf **NumPy** kullanılarak sıfırdan yazılmış, küçük veri setleri üzerinde derin öğrenme (Deep Learning) algoritmalarını anlamak ve denemek için oluşturulmuş özel bir projedir.  
+**ARdL**, saf **NumPy** kullanılarak sıfırdan yazılmış, küçük veri setleri üzerinde derin öğrenme (Deep Learning) algoritmalarını anlamak ve denemek için oluşturulmuş bir projedir.  
 Bu kütüphane, hem **Yapay Sinir Ağlarını (NN / MLP)** hem de **Konvolüsyonel Sinir Ağlarını (CNN)** destekler.
 
 ---
@@ -26,6 +26,14 @@ ve test kümesinde **%96’nın üzerinde doğruluk** elde etmiştir.
 Bu, tam bağlı basit bir yapay sinir ağının bile 
 yapılandırılmış veriler üzerinde etkili sonuçlar verebileceğini gösterir.
 
+--
+# CNN Mnist Dataset Sonuçları 
+![CNN Training Results on Mnist Dataset](assets/mnist_results.png)
+
+20 epochda 0.001 lr değeri ile elde edilen sonuçlar
+Epoch 20: Train Loss=0.2815, Train Acc=92.80% | Test Loss=0.1832, Test Acc=94.00%
+
+--
 
 ## Model Kaydetmek ve Yüklemek 
 ### Save
@@ -89,13 +97,7 @@ better performance.
 Currently the only optimization algorithm used in this project is SGD (Stochastic Gradient Descent).
 
 ---
-# CNN Mnist Dataset Sonuçları 
-![CNN Training Results on Mnist Dataset](assets/mnist_results.png)
 
-20 epochda 0.001 lr değeri ile elde edilen sonuçlar
-Epoch 20: Train Loss=0.2815, Train Acc=92.80% | Test Loss=0.1832, Test Acc=94.00%
-
----
 ## CNN Nasıl Çalışır | How the CNN works?
 
 ### Convolution 
@@ -166,6 +168,17 @@ Pooling işleminden sonra verimiz bir MLP ağına girer ve sınıflandırılır.
 **En:**
 After pooling, the data is passed to an MLP network for classification. In binary classification, 
 Sigmoid is generally used, while in multi-class classification, Softmax is applied.
+
+---
+## Model Kaydetmek ve Yüklemek 
+### Save
+np.savez("mlp_model.npz", weights=W_dense, biases=b_dense)
+
+### Load
+data = np.load("mlp_model.npz", allow_pickle=True)
+W_dense_loaded = data['weights']
+b_dense_loaded = data['biases']
+
 
 ---
 ## Gözlemlerim 
