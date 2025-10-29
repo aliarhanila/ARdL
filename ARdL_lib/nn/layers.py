@@ -133,3 +133,50 @@ def max_pool2d_backward(dY, X, size=2, stride=2):
             idx = np.unravel_index(np.argmax(patch), patch.shape)
             dX[i*stride+idx[0], j*stride+idx[1]] = dY[i,j]
     return dX
+# -------------------------
+# Helper: img2col
+# -------------------------
+def im2col(X, kernel_size, stride=1):
+    """
+    X: (H, W) input image
+    kernel_size: int
+    stride: int
+    return: (out_h*out_w, kernel_size*kernel_size) matrix
+    """
+    H, W = X.shape
+    out_h = (H - kernel_size) // stride + 1
+    out_w = (W - kernel_size) // stride + 1
+
+    cols = []
+    for i in range(0, out_h*stride, stride):
+        for j in range(0, out_w*stride, stride):
+            patch = X[i:i+kernel_size, j:j+kernel_size].ravel()
+            cols.append(patch)
+    return np.array(cols)
+#---------------------
+#Deneysel Optimizasyon
+#--------------------
+def conv2d_vec(X, kernel, stride=1):
+    """
+    X: (H, W)
+    kernel: (kH, kW)
+    """
+    kH, kW = kernel.shape
+    X_col = im2col(X, kH, stride)  # (out_h*out_w, kH*kW)
+    kernel_col = kernel.ravel()    # (kH*kW,)
+    out = X_col.dot(kernel_col)    # matris çarpımı
+    out_h = (X.shape[0]-kH)//stride + 1
+    out_w = (X.shape[1]-kW)//stride + 1
+    return out.reshape(out_h, out_w)
+
+def max_pool2d_vec(X, size=2, stride=2):
+    H, W = X.shape
+    out_h = (H - size) // stride + 1
+    out_w = (W - size) // stride + 1
+
+    cols = []
+    for i in range(0, out_h*stride, stride):
+        for j in range(0, out_w*stride, stride):
+            patch = X[i:i+size, j:j+size]
+            cols.append(np.max(patch))
+    return np.array(cols).reshape(out_h, out_w)
