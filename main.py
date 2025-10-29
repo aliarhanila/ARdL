@@ -1,11 +1,10 @@
-# main.py
 import numpy as np
 from ARdL_lib.ardl.train_cnn import train_cnn, predict
 
 # -------------------------
 # Dataset
 # -------------------------
-data = np.load("mnist.npz")
+data = np.load("")
 X_train, y_train = data['x_train'], data['y_train']
 X_test, y_test = data['x_test'], data['y_test']
 
@@ -14,9 +13,9 @@ X_train = X_train / 255.0
 X_test = X_test / 255.0
 
 # -------------------------
-# Küçük alt küme ve sadece ilk 3 sınıf
+# Small subset and only first 2 classes
 # -------------------------
-classes_to_use = [0, 1] # sadece 0,1 
+classes_to_use = [0, 1] # only 0,1 
 
 train_mask = np.isin(y_train, classes_to_use)
 test_mask = np.isin(y_test, classes_to_use)
@@ -28,12 +27,12 @@ X_test_small = X_test[test_mask][:5]
 y_test_small = y_test[test_mask][:5]
 
 # One-hot encoding
-num_classes = 2  # sadece 0,1
+num_classes = 2  # only 0,1
 y_train_small_onehot = np.eye(num_classes)[y_train_small]
 y_test_small_onehot = np.eye(num_classes)[y_test_small]
 
 # -------------------------
-# Conv katmanı 
+# Conv layer
 # -------------------------
 conv_layers = [
     {
@@ -48,7 +47,7 @@ conv_layers = [
 ]
 
 # -------------------------
-# Modeli eğit
+# Model Train
 # -------------------------
 epochs = 10
 lr = 0.01
@@ -62,9 +61,9 @@ conv_layers, W_dense, b_dense, history = train_cnn(
 )
 
 # -------------------------
-# Tahmin
+# Predicts
 # -------------------------
-print("\nTahminler:")
+print("\nPredicts:")
 for i in range(len(X_test_small)):
     y_pred = predict(X_test_small[i], conv_layers, W_dense, b_dense)
     print(f"Örnek {i+1}: Tahmin = {np.argmax(y_pred)}, Gerçek = {y_test_small[i]}")

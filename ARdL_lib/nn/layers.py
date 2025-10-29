@@ -1,7 +1,7 @@
 import numpy as np
 
 # -------------------------
-# Aktivasyonlar
+# Activations
 # -------------------------
 def ReLu(x):
     return np.maximum(0, x)
@@ -21,13 +21,13 @@ def Softmax(x):
     return exps / np.sum(exps, axis=-1, keepdims=True)
 
 # -------------------------
-# Kayıp
+# Loss
 # -------------------------
 def categorical_crossentropy(y_true, y_pred):
     return -np.mean(np.sum(y_true * np.log(y_pred + 1e-9), axis=1))
 
 # -------------------------
-# Dense Ağı Ağırlık ve Bias
+# Dense Network Weights and Biases
 # -------------------------
 def Weights_Bias(input_dim, hidden_dims, output_dim):
     dims = [input_dim] + hidden_dims + [output_dim]
@@ -125,9 +125,6 @@ def max_pool2d(X, size=2, stride=2):
     return Y
 
 def max_pool2d_backward(dY, X, size=2, stride=2):
-    """
-    Pooling backward fonksiyonu, stride ile doğru şekilde çalışır.
-    """
     dX = np.zeros_like(X)
     out_h, out_w = dY.shape
     for i in range(out_h):
