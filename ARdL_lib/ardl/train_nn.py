@@ -1,4 +1,3 @@
-# ardl/train_nn.py
 import numpy as np
 from ARdL_lib.nn.layers import Weights_Bias, Forward, BackProp, ReLu, ReLu_grad, Sigmoid, Softmax
 
