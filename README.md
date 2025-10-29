@@ -92,16 +92,8 @@ Currently the only optimization algorithm used in this project is SGD (Stochasti
 # CNN Mnist Dataset Sonuçları 
 ![CNN Training Results on Mnist Dataset](assets/mnist_results.png)
 
-20 epochda 0.001lr değeri ile elde edilen sonuçlar
-Epoch 18: Train Loss=0.2610, Train Acc=91.40% | Test Loss=0.2016, Test Acc=93.00%
-Epoch 19: Train Loss=0.2628, Train Acc=92.40% | Test Loss=0.1925, Test Acc=93.00%
+20 epochda 0.001 lr değeri ile elde edilen sonuçlar
 Epoch 20: Train Loss=0.2815, Train Acc=92.80% | Test Loss=0.1832, Test Acc=94.00%
-Tahminler/Predicts:
-Örnek 1: Tahmin = 2, Gerçek = 2
-Örnek 2: Tahmin = 1, Gerçek = 1
-Örnek 3: Tahmin = 0, Gerçek = 0
-Örnek 4: Tahmin = 4, Gerçek = 4
-
 
 ---
 ## CNN Nasıl Çalışır | How the CNN works?
