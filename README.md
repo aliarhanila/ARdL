@@ -26,7 +26,10 @@ Bu kütüphane, hem **Yapay Sinir Ağlarını (NN / MLP)** hem de **Konvolüsyon
 
 
 
-
+MLP modeli Iris veri setindeki örüntüleri başarıyla öğrenmiştir 
+ve test kümesinde **%96’nın üzerinde doğruluk** elde etmiştir.  
+Bu, tam bağlı basit bir yapay sinir ağının bile 
+yapılandırılmış veriler üzerinde etkili sonuçlar verebileceğini gösterir.
 
 
 ## MLP Nasıl Çalışır? | How the NN Works
