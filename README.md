@@ -16,17 +16,6 @@ Bu kütüphane, hem **Yapay Sinir Ağlarını (NN / MLP)** hem de **Konvolüsyon
 - 🧠 Educational — designed for learning, debugging and visualization
 
 ---
-## 🗂️ Proje Yapısı | Project Structure
-
-ARdL/
-├── ARdL_lib/
-│   ├── ardl/
-│   │   ├── __init__.py
-│   │   ├── train_cnn.py      # Convolutional Neural Network implementation
-│   │   └── train_nn.py       # Fully Connected Neural Network (MLP)
-├── main.py                   # Example training script (CNN by default)
-├── xyz.npz                    # Dataset file (NumPy format)
-└── README.md
 ## MLP İris Dataset Sonuçları
 
 
