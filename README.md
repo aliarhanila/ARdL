@@ -90,7 +90,7 @@ Currently the only optimization algorithm used in this project is SGD (Stochasti
 
 ---
 # CNN Mnist Dataset Sonuçları 
-![MLP Training Results on Iris Dataset](assets/mnist_results.png)
+![CNN Training Results on Mnist Dataset](assets/mnist_results.png)
 
 20 epochda 0.001lr değeri ile elde edilen sonuçlar
 Epoch 18: Train Loss=0.2610, Train Acc=91.40% | Test Loss=0.2016, Test Acc=93.00%
@@ -201,8 +201,8 @@ Bu farkın, modelin başlangıç ağırlıkları ve biaslarından kaynaklandığ
 
 Aşağıda, aynı parametrelere sahip iki modelin farklı başlangıç ağırlıkları nedeniyle nasıl farklı sonuçlar verdiğini görebilirsiniz 👇
 
-![MLP Training Results on Iris Dataset](assets/mnist_results.png)
-![MLP Training Results on Iris Dataset](assets/mnist1_results.png)
+![CNN Training Results on Mnist Dataset](assets/mnist_results.png)
+![CNN Training Results on Mnist Dataset](assets/mnist1_results.png)
 
 İkinci grafikte yalnızca 8 epoch var; bu yüzden ilk grafiğin de **ilk 8 epoch’una** dikkat etmenizi öneririm.
 
