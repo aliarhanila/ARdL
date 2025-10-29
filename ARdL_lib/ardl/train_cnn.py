@@ -32,7 +32,7 @@ def predict(X, conv_layers, W_dense, b_dense):
     return Softmax(z)
 
 # -------------------------
-# CNN Train Fonksiyonu (Conv + Dense Backprop)
+# CNN Train Function (Conv + Dense Backprop)
 # -------------------------
 def train_cnn(X_train, y_train, conv_layers, lr=0.01, epochs=10):
     # Conv kernel initialize
@@ -41,7 +41,7 @@ def train_cnn(X_train, y_train, conv_layers, lr=0.01, epochs=10):
             k_size = conv.get('kernel_size', 3)
             conv['kernel'] = np.random.randn(k_size, k_size) * 0.1
 
-    # Dense boyutu
+    # Dense Size
     sample_out = flatten_after_conv(X_train[0], conv_layers)
     flatten_dim = sample_out.shape[0]
     W_dense = np.random.randn(flatten_dim, y_train.shape[1]) * 0.1
@@ -106,11 +106,11 @@ def train_cnn(X_train, y_train, conv_layers, lr=0.01, epochs=10):
                 if conv.get('activation','relu') == 'relu':
                     delta_conv *= ReLu_grad(conv_outs[idx])
 
-                # Conv kernel güncelle
+                # Conv kernel update
                 _, dK = conv2d_backward(delta_conv, a_prev, conv['kernel'], stride=conv.get('stride',1))
                 conv['kernel'] -= lr * dK
 
-                # Üst katmana delta
+                # top layer  delta
                 delta_conv, _ = conv2d_backward(delta_conv, a_prev, conv['kernel'], stride=conv.get('stride',1))
 
         train_loss = total_loss / len(X_train)
