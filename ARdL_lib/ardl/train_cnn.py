@@ -1,4 +1,3 @@
-# my_cnn_lib/ardl/train_cnn.py
 import numpy as np
 from ARdL_lib.nn.layers import ReLu, ReLu_grad, Softmax, categorical_crossentropy
 from ARdL_lib.nn.layers import conv2d, conv2d_backward, max_pool2d, max_pool2d_backward
