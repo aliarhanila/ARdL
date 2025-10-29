@@ -1,4 +1,3 @@
-# main.py
 import numpy as np
 from ARdL_lib.ardl.train_cnn import train_cnn, predict
 
