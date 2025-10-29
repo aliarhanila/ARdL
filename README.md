@@ -36,7 +36,7 @@ data = np.load("mlp_model.npz", allow_pickle=True)
 W_dense_loaded = data['weights']
 b_dense_loaded = data['biases']
 
-
+---
 ## MLP Nasıl Çalışır? | How the NN Works
 ### Forward Propagation:
 
@@ -88,6 +88,22 @@ better performance.
 
 Currently the only optimization algorithm used in this project is SGD (Stochastic Gradient Descent).
 
+---
+# CNN Mnist Dataset Sonuçları 
+![MLP Training Results on Iris Dataset](assets/mnist_results.png)
+
+20 epochda 0.001lr değeri ile elde edilen sonuçlar
+Epoch 18: Train Loss=0.2610, Train Acc=91.40% | Test Loss=0.2016, Test Acc=93.00%
+Epoch 19: Train Loss=0.2628, Train Acc=92.40% | Test Loss=0.1925, Test Acc=93.00%
+Epoch 20: Train Loss=0.2815, Train Acc=92.80% | Test Loss=0.1832, Test Acc=94.00%
+Tahminler/Predicts:
+Örnek 1: Tahmin = 2, Gerçek = 2
+Örnek 2: Tahmin = 1, Gerçek = 1
+Örnek 3: Tahmin = 0, Gerçek = 0
+Örnek 4: Tahmin = 4, Gerçek = 4
+
+
+---
 ## CNN Nasıl Çalışır | How the CNN works?
 
 ### Convolution 
@@ -158,6 +174,41 @@ Pooling işleminden sonra verimiz bir MLP ağına girer ve sınıflandırılır.
 **En:**
 After pooling, the data is passed to an MLP network for classification. In binary classification, 
 Sigmoid is generally used, while in multi-class classification, Softmax is applied.
+
+---
+## Gözlemlerim 
+En ilginç gözlemim **random_seed** fonksiyonunda oldu.
+Bu fonksiyon genelde göz ardı edilir; ancak gerçek potansiyeli fark edildiğinde hem oldukça kullanışlı hem de zaman kazandırıcı bir araçtır.
+
+Genel olarak, MLP ve CNN algoritmaları veriyi ilk kez **rastgele katsayılar (ağırlıklar) ve bias değerleriyle** işler.
+Sinir ağı, bu rastgele değerlerle bir tahmin üretir ve tahminin gerçek değerden ne kadar saptığına göre katsayılarını günceller.
+Bu süreç —tahmin, hata hesaplama, ağırlık güncelleme— defalarca tekrarlanarak modelin gerçek değerlere yaklaşması sağlanır.
+
+Bu işlemin ne kadar süreceğini **learning rate (öğrenme oranı)** belirler.
+Learning rate ne kadar yüksekse model o kadar hızlı öğrenir;
+ancak rastgele başlatılan ağırlıklar büyük değerler içeriyorsa, yüksek learning rate modelin **kararsız hale gelmesine** yol açabilir.
+Bu yüzden genellikle düşük bir learning rate ile daha fazla epoch kullanılarak **daha stabil** bir öğrenme hedeflenir.
+
+Fakat burada dikkat çekici bir denge vardır:
+Learning rate yükseldikçe model daha hızlı toparlanır, ancak stabilitesi azalır.
+İşte bu noktada **random_seed** devreye girer.
+Random seed sayesinde, sinir ağına ilk başta verilen rastgele ağırlıklar ve biaslar tekrarlanabilir hale gelir.
+Bu da modelin her çalıştırmada aynı başlangıçtan yola çıkmasını, dolayısıyla daha kararlı ve öngörülebilir sonuçlar vermesini sağlar.
+
+Kendi denemelerimde, random seed eklemeden önce aynı veri, aynı parametre ve aynı algoritmayla bile modeli her çalıştırdığımda farklı sonuçlar aldığımı fark ettim:
+Bazen hiç öğrenmiyor, bazen çok hızlı öğreniyordu.
+Bu farkın, modelin başlangıç ağırlıkları ve biaslarından kaynaklandığını keşfettim.
+
+Aşağıda, aynı parametrelere sahip iki modelin farklı başlangıç ağırlıkları nedeniyle nasıl farklı sonuçlar verdiğini görebilirsiniz 👇
+
+![MLP Training Results on Iris Dataset](assets/mnist_results.png)
+![MLP Training Results on Iris Dataset](assets/mnist1_results.png)
+
+İkinci grafikte yalnızca 8 epoch var; bu yüzden ilk grafiğin de **ilk 8 epoch’una** dikkat etmenizi öneririm.
+
+💡 Kısa özet:
+random_seed, küçük veri setlerinde ve derin öğrenmede şans faktörünü kontrol altına alır,
+modellerin tekrarlanabilir ve daha güvenilir sonuçlar vermesini sağlar.
 
 
 ### 🖊️ Author | Yazar
